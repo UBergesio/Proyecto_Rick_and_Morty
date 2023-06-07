@@ -1,0 +1,16 @@
+.input{
+  background-color:  rgba(154, 138, 170, 0.5);
+  border-radius: 0.6em;
+  color:white;
+}
+
+.btn{
+  background-color: rgb(56, 53, 53);
+  color: rgb(24, 190, 38);
+  border-radius: 0.6em;
+}
+.btn:hover{
+  background-color: black;
+  cursor: pointer;
+  color: white;
+}
