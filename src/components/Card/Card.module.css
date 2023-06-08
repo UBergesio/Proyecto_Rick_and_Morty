@@ -29,6 +29,10 @@
   border-radius: 0.4em;
   
 }
+.btn:hover{
+  cursor: pointer;
+  background-color: rgb(255, 57, 57);
+}
 
 .image{
   border-radius: 0.8em;

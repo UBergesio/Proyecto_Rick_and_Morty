@@ -4,9 +4,8 @@ import style from "./Cards.module.css"
 export default function Cards({ characters }) {
   return (
     <div className={style.container}>
-      {characters.map((personaje) => {
+    {characters.map((personaje) => {
         const { id, name, status, species, gender, origin, image } = personaje;
-
         return (
           <Card
             id={id}
