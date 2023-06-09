@@ -1,4 +1,5 @@
 .container{
+  margin-top: -0.5em; /* para que no haga scroll veertical */
   display: flex;
   justify-content: end;
   align-items: end;
@@ -14,8 +15,8 @@
 }
 
 .btn{
-  background-color: rgb(34, 33, 33);
-  color: rgb(2, 99, 50);
+  background-color: rgb(26, 24, 24);
+  color: rgb(4, 168, 86);
   border-radius: 0.3em;
   margin-left: 0.3em;
   width: 6em;
