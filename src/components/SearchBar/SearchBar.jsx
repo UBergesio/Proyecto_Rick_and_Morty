@@ -1,6 +1,8 @@
 import style from "./SearchBar.module.css"
+import App from '../../App'
 
-export default function SearchBar(onSearch) {
+const SearchBar = (props) => {
+  const { onSearch } = props;
    return (
      <div className={style.container}>
        <input className={style.input} type="search" />
@@ -8,3 +10,6 @@ export default function SearchBar(onSearch) {
      </div>
    );
 }
+
+
+export default SearchBar
