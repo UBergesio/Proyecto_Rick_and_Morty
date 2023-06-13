@@ -4,10 +4,8 @@ import App from "../../App";
 
 
 const Nav = (props) => {
-  const { FuncionSearch } = props;
-   return (
-    <SearchBar onSearch={FuncionSearch} />
-  )
+  const { onSearch } = props;
+   return <SearchBar onSearch={onSearch} />;
 }
 
 

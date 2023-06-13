@@ -1,39 +1,40 @@
 import './App.css';
-/* import Card from './components/Card/Card'; */
-/* import SearchBar from './components/SearchBar/SearchBar';  */
 import Cards from './components/Cards/Cards';
 import Nav from './components/Nav/Nav';
 import { useState } from "react";
+import axios from 'axios';
 
 function App() {
   const [characters, setCharacters] = useState([]);
-  
-  const FuncionSearch = (props) => {
-    setCharacters([
-      ...characters,
-      {
-        id: 1,
-        name: "Rick Sanchez",
-        status: "Alive",
-        species: "Human",
-        gender: "Male",
-        origin: {
-          name: "Earth (C-137)",
-          url: "https://rickandmortyapi.com/api/location/1",
-        },
-        image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-      },
-    ]);
+  function onSearch(id) {
+    const repeated = characters.find((item) => item.id === Number(id));
+    if (repeated) return alert("¡Este personaje ya fue agregado!");
+
+    axios(`https://rickandmortyapi.com/api/character/${id}`).then(
+      ({ data }) => {
+        if (data.name) {
+          setCharacters((oldChars) => [...oldChars, data]);
+        } else {
+          window.alert("¡No hay personajes con este ID!");
+        }
+      }
+    );
+  }
+
+    const onClose = (id) => { 
+    /* const idDelete = parseFloat(id) */
+    const filtroCharacters = characters.filter((personaje) =>(
+     personaje.id !== id))
+     setCharacters(filtroCharacters);
   };
-  
   
   return (
     <div className="App">
-      <Nav FuncionSearch={FuncionSearch} />
-      <Cards characters={characters} />
+      <Nav onSearch={onSearch} />
+      <Cards characters={characters} onClose={onClose} />
     </div>
   );
-  }
+}
   
+
   export default App;
-  

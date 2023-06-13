@@ -5,7 +5,7 @@ export default function Card(props) {
     <div className={style.container}>
       <button
         className={style.btn}
-        onClick={() => window.alert("Emulamos que se cierra la card")}
+        onClick={() => props.onClose(props.id)}
       >
         X
       </button>
