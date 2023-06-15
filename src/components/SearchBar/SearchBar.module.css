@@ -7,6 +7,7 @@
 
 .input{
   background-color:  rgba(0, 0, 0, 0.5);
+  margin-top: 0.5em;
   border-radius: 0.3em;
   color:white;
   height: 1.75em;
@@ -16,6 +17,7 @@
 
 .btn{
   background-color: rgb(26, 24, 24);
+  margin-top: 0.5em;
   color: rgb(4, 168, 86);
   border-radius: 0.3em;
   margin-left: 0.3em;

@@ -1,10 +1,27 @@
+    @keyframes slideInLeft {
+  from {
+    transform: scale(0.8, 0.8);
+    opacity: 0;
+  }
+  to {
+    transform: matrix(0);
+    opacity: 1;
+  }
+}
+
+
 .container{
-  width: 18%;
+  animation: slideInLeft 0.5s ease-in-out;
+  max-width: 18%;
+   overflow: hidden; /* Oculta el contenido que se desborda del contenedor */
+  text-overflow: ellipsis; /* Muestra puntos suspensivos (...) cuando el texto se desborda */
+  white-space: nowrap;
   height: auto;
   justify-content: center;
   background-color: rgba(0,0,0,0.7);
   border-radius: 0.8em;
   margin: 0.5em;
+  margin-top: 1em;
   padding-bottom: 0.3em;
   padding-top: 0.5em;
   /* margin-bottom: -0.8em */; /* para que no haga scroll veertical */
@@ -29,11 +46,13 @@
   border-top-right-radius: 40%;
   border-bottom-right-radius: 0%;
   border-bottom-left-radius: 20%;
-  display: inline-block;
+  flex-wrap: wrap;
   float: left;
   margin-top: -13.5%;
-  margin-left: 1.08em;
+  margin-left: 10%;
   position: sticky;
+  font-size: larger;
+
   -webkit-text-stroke: 0.03em black;
   @media  screen and (max-width: 600px){
     font-size: medium;

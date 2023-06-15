@@ -26,7 +26,6 @@ const Deatil = () => {
     if (propertyValue == null) {
       return null;
     }
-
     return (
       <div>
         <strong>{propertyName}: </strong>
@@ -38,15 +37,14 @@ const Deatil = () => {
 
   return (
     <div>
-      <h3 className={style.titulo}>{character.name}</h3>
-      <h4>{renderizarPersonaje("Status", character.status)}</h4>
-      <h4>{renderizarPersonaje("Species", character.species)}</h4>
-      <h4>{renderizarPersonaje("Gender", character.gender)}</h4>
-      <h4>{renderizarPersonaje("Origin", character.origin?.name)}</h4>
-      {renderizarPersonaje(
-        "Image",
-        <img src={character.image} alt={character.name} />
-      )}
+      <div className={style.containerTexto}>
+        <h3 className={style.titulo}>{character.name}</h3>
+        <h3 className={style.description}>{renderizarPersonaje("Status", character.status)}</h3>
+        <h3 className={style.description}>{renderizarPersonaje("Species", character.species)}</h3>
+        <h3 className={style.description}>{renderizarPersonaje("Gender", character.gender)}</h3>
+        <h3 className={style.description}>{renderizarPersonaje("Origin", character.origin?.name)}</h3>
+      </div>
+      <img src={character.image} alt={character.name} className={style.img} />
     </div>
   );
 };

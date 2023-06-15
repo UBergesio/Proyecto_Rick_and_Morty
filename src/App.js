@@ -1,12 +1,12 @@
 import './App.css';
 import Cards from './components/Cards/Cards';
 import Nav from './components/Nav/Nav';
+import About from './components/About/About';
+import Deatil from './components/Deatil/Deatil';
 import { useState } from "react";
 import axios from 'axios';
 import { Routes } from "react-router-dom";
 import { Route } from "react-router-dom";
-import About from './components/About/About';
-import Deatil from './Deatil/Deatil';
 
 function App() {
   const [characters, setCharacters] = useState([]);
