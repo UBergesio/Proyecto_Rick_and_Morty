@@ -22,6 +22,8 @@ const Deatil = () => {
     return setCharacter({});
   }, [id]);
   
+
+  // ! Esta funcion la puedo hacer mejor, la dejo abajo comentada.
   const renderizarPersonaje = (propertyName, propertyValue) => {
     if (propertyValue == null) {
       return null;
@@ -48,5 +50,28 @@ const Deatil = () => {
     </div>
   );
 };
+
+
+/*  return (
+    <div>
+      {character.name && (
+        <div>
+          {character.name && <h1>Name: {character.name}</h1>}
+          {character.image && (
+            <img src={character.image} alt={character.name} />
+          )}
+          {character.status && <h2>Status: {character.status}</h2>}
+          {character.species && <h2>Specie: {character.species}</h2>}
+          {character.gender2 && <h2>Gender: {character.gender}</h2>}
+          {character.origin?.name && character.origin.name === "unknown" ? (
+            <h2>Origin: Humano</h2>
+          ) : (
+            <h2>Origin: {character.origin.name}</h2>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}; */
 
 export default Deatil;

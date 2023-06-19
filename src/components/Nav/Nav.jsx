@@ -1,11 +1,17 @@
 import React from "react";
 import SearchBar from "../SearchBar/SearchBar";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import style from "./Nav.module.css";
 
 
 const Nav = (props) => {
   const { onSearch } = props;
+
+
+  const location = useLocation();
+  const rutaSelect = location.pathname === "/";
+  if (rutaSelect) return null;
+
   return (
     <div className={style.container}>
       <Link to="/about">
