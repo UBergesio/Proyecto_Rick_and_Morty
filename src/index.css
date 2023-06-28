@@ -7,7 +7,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-image: url(../img/fondonuevo.jpg);
+  background-image: url(../src/img/fondonuevo.jpg);
   background-size: 100%;
 }
 

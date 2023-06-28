@@ -5,7 +5,7 @@ import style from "./Nav.module.css";
 
 
 const Nav = (props) => {
-  const { onSearch } = props;
+  const { onSearch, closeSession } = props;
 
 
   const location = useLocation();
@@ -20,6 +20,12 @@ const Nav = (props) => {
       <Link to="/Home">
         <button className={style.botones}>Home</button>
       </Link>
+      <Link to="/favorites">
+        <button className={style.botones}>Favorites</button>
+      </Link>
+      <button className={style.botones} onClick={closeSession}>
+        LogOut
+      </button>
       <SearchBar onSearch={onSearch} />
     </div>
   );

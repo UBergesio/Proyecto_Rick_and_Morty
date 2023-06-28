@@ -8,6 +8,7 @@ import Nav from './components/Nav/Nav';
 import About from './components/About/About';
 import Deatil from './components/Deatil/Deatil';
 import Form from './components/Form/Form';
+import Favorites from './components/Favorites/Favorites';
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -36,6 +37,7 @@ function App() {
   const [access, setAccess] = useState(false);
   const EMAIL = "ulibergesio@gmail.com";
   const PASSWORD = "A1a2a3a4";
+
   const login = (userData) => {
     if (userData.password === PASSWORD && userData.email === EMAIL) {
     setAccess(true);
@@ -43,18 +45,32 @@ function App() {
     }
   };
   
+  const closeSession = () => {
+    setAccess(false);
+  };
+
   useEffect(() => {
     !access && navigate("/");
-  }, [access]);
+  }, [access, navigate]);
+
+
   
   return (
     <div className="App">
-        <Nav onSearch={onSearch} />
+      <Nav onSearch={onSearch} closeSession={closeSession} />
       <Routes>
-        <Route path='/' element={<Form login={login} />} />
-        <Route path="/home" element={<Cards characters={characters} onClose={onClose}/>}/>;
+        <Route
+          path="/favorites"
+          element={<Favorites characters={characters} onClose={onClose} />}
+        />
+        <Route path="/" element={<Form login={login} />} />
+        <Route
+          path="/home"
+          element={<Cards characters={characters} onClose={onClose} />}
+        />
+        ;
         <Route path="/about" element={<About />} />
-        <Route path="/detail/:id" element={<Deatil/>} />
+        <Route path="/detail/:id" element={<Deatil />} />
       </Routes>
     </div>
   );

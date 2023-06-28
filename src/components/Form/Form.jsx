@@ -1,6 +1,7 @@
 import { useState } from "react";
 import style from "./Form.module.css"
 import validate from "./validation";
+import imagenCasa from "../../img/fondo_casa.jpg"
 
 const Form = (props) => {
   const [userData, setUserData] = useState({
@@ -25,9 +26,8 @@ const Form = (props) => {
 
   return (
     <div className={style.content}>
-      <br />
-      <br />
-      
+      <h1 className={style.titulo}>Rick and Morty</h1>
+      <img src={imagenCasa} alt="fondo casa" className={style.img} />
       <form action="">
         <label htmlFor="" className={style.label}>
           Email:
@@ -48,7 +48,7 @@ const Form = (props) => {
         </label>
         <br />
         <input
-          type="text"
+          type="password"
           value={userData.password}
           name="password"
           onChange={handleChange}
