@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import Card from "../Card/Card";
-import style from "./Favorites.module.css"
+import style from "./Favorites.module.css";
 import { filterCards, orderCards } from "../redux/actions";
 import { useDispatch } from "react-redux";
 
@@ -11,14 +11,14 @@ const Favorites = (props) => {
   const [aux, setAux] = useState(false);
 
   const handleOrder = (event) => {
-    dispatch(orderCards(event.target.value))
+    dispatch(orderCards(event.target.value));
     setAux(true);
-   };
-   
-   const handleFilter = (event) => {
-     dispatch(filterCards(event.target.value))
-   };
-   
+  };
+
+  const handleFilter = (event) => {
+    dispatch(filterCards(event.target.value));
+  };
+
   return (
     <div>
       <select name="" id="" onChange={handleOrder}>
@@ -44,6 +44,7 @@ const Favorites = (props) => {
             species={character.species}
             gender={character.gender}
             origin={character.origin}
+            onClose={props.onClose}
           />
         ))}
       </div>

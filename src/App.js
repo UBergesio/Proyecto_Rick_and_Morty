@@ -1,14 +1,14 @@
-import './App.css';
-import axios from 'axios';
+import "./App.css";
+import axios from "axios";
 import { useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { useEffect } from 'react';
-import Cards from './components/Cards/Cards';
-import Nav from './components/Nav/Nav';
-import About from './components/About/About';
-import Deatil from './components/Deatil/Deatil';
-import Form from './components/Form/Form';
-import Favorites from './components/Favorites/Favorites';
+import { useEffect } from "react";
+import Cards from "./components/Cards/Cards";
+import Nav from "./components/Nav/Nav";
+import About from "./components/About/About";
+import Deatil from "./components/Deatil/Deatil";
+import Form from "./components/Form/Form";
+import Favorites from "./components/Favorites/Favorites";
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -16,7 +16,7 @@ function App() {
     const repeated = characters.find((item) => item.id === Number(id));
     if (repeated) return alert("¡Este personaje ya fue agregado!");
 
-    axios(`https://rickandmortyapi.com/api/character/${id}`).then(
+    axios(`http://localhost:3001/rickandmorty/character/${id}`).then(
       ({ data }) => {
         if (data.name) {
           setCharacters((oldChars) => [...oldChars, data]);
@@ -27,24 +27,25 @@ function App() {
     );
   }
 
-    const onClose = (id) => { 
-    const filtroCharacters = characters.filter((personaje) =>(
-     personaje.id !== id))
-     setCharacters(filtroCharacters);
+  const onClose = (id) => {
+    const filtroCharacters = characters.filter(
+      (personaje) => personaje.id !== id
+    );
+    setCharacters(filtroCharacters);
   };
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [access, setAccess] = useState(false);
   const EMAIL = "ulibergesio@gmail.com";
   const PASSWORD = "A1a2a3a4";
 
   const login = (userData) => {
     if (userData.password === PASSWORD && userData.email === EMAIL) {
-    setAccess(true);
-    navigate("/home");
+      setAccess(true);
+      navigate("/home");
     }
   };
-  
+
   const closeSession = () => {
     setAccess(false);
   };
@@ -53,8 +54,6 @@ function App() {
     !access && navigate("/");
   }, [access, navigate]);
 
-
-  
   return (
     <div className="App">
       <Nav onSearch={onSearch} closeSession={closeSession} />
@@ -75,6 +74,5 @@ function App() {
     </div>
   );
 }
-  
 
-  export default App;
+export default App;

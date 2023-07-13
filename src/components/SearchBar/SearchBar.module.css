@@ -1,8 +1,8 @@
 .container{
   margin-top: -0.5em; /* para que no haga scroll veertical */
   display: flex;
-  justify-content: end;
-  align-items: end;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .input{
