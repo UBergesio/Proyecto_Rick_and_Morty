@@ -12,11 +12,11 @@ import Favorites from "./components/Favorites/Favorites";
 
 function App() {
   const [characters, setCharacters] = useState([]);
-  function onSearch(id) {
+  async function onSearch(id) {
     const repeated = characters.find((item) => item.id === Number(id));
     if (repeated) return alert("¡Este personaje ya fue agregado!");
 
-    axios(`http://localhost:3001/rickandmorty/character/${id}`).then(
+    /* axios(`http://localhost:3001/rickandmorty/character/${id}`).then(
       ({ data }) => {
         if (data.name) {
           setCharacters((oldChars) => [...oldChars, data]);
@@ -24,7 +24,19 @@ function App() {
           window.alert("¡No hay personajes con este ID!");
         }
       }
-    );
+    ); */
+    try {
+      const backRequest = await axios(
+        `http://localhost:3001/rickandmorty/character/${id}`
+      );
+      if (backRequest.data.name) {
+        setCharacters((oldChars) => [...oldChars, backRequest.data]);
+      } else {
+        window.alert("¡No hay personajes con este ID!");
+      }
+    } catch (error) {
+      window.alert(error.response.data.message);
+    }
   }
 
   const onClose = (id) => {
@@ -40,21 +52,26 @@ function App() {
   const PASSWORD = "A1a2a3a4";
 
 
-  function login(userData) {
+  async function login(userData) {
     const { email, password } = userData;
     const URL = "http://localhost:3001/rickandmorty/login/";
-    axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+   /*  axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
       const { access } = data;
       setAccess(data);
       access && navigate("/home");
-    });
-  }
-/*   const login = (userData) => {
-    if (userData.password === PASSWORD && userData.email === EMAIL) {
-      setAccess(true);
-      navigate("/home");
+    }); */
+    try {
+      const backLogin = await axios(
+        URL + `?email=${email}&password=${password}`
+      );
+      const { data } = backLogin;
+      const { access } = data;
+      setAccess(data);
+      access && navigate("/home");
+    } catch (error) {
+      window.alert(error.message);
     }
-  }; */
+  }
 
   const closeSession = () => {
     setAccess(false);
