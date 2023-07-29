@@ -1,7 +1,6 @@
 /* "test": "jest --detectOpenHandles" */
 const express = require("express");
-const router = require("./routes/index")
-const server = require("./app")
+const router = require("./routes/index");
 
 const server = express();
 
@@ -16,13 +15,7 @@ server.use((req, res, next) => {
   next();
 });
 
+server.use(express.json());
+server.use("/rickandmorty", router);
 
-server.use(express.json())
-server.use('/rickandmorty', router)
-
-
-const PORT = 3001;
-
-server.listen(PORT, () => {
-  console.log("Server raised in port: " + PORT);
-});
+module.exports = server

@@ -1,5 +1,5 @@
 let myFavorites = [];
-//Hola
+
 const postFav = (req, res) => {
   myFavorites.push(req.body);
   res.status(200).json(myFavorites);
