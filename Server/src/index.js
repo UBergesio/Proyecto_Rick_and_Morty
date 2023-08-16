@@ -1,7 +1,8 @@
 /* "test": "jest --detectOpenHandles" */
 const express = require("express");
-const router = require("./routes/index")
-const server = require("./app")
+const router = require("./routes/index");
+//const server = require("./app");
+const { conn } = require("./DB_connection");
 
 const server = express();
 
@@ -23,6 +24,12 @@ server.use('/rickandmorty', router)
 
 const PORT = 3001;
 
-server.listen(PORT, () => {
-  console.log("Server raised in port: " + PORT);
-});
+conn.sync({ force: true }).then(() => {
+  server.listen(PORT, () => {
+    console.log("Server raised in port: " + PORT);
+  });
+  
+})
+  .catch((error) => {
+  console.log(error.message);
+})
